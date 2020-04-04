@@ -57,7 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro">
-      <HintPath>..\ExcelDataProcessing\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -237,7 +237,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataProcessingUICommon\Lab.UICommon.csproj">
+    <ProjectReference Include="..\Lab.UICommon\Lab.UICommon.csproj">
       <Project>{b03160ea-6978-43ef-b445-e92bdc6679f2}</Project>
       <Name>Lab.UICommon</Name>
     </ProjectReference>

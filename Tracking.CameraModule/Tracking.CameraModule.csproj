@@ -53,18 +53,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\ExcelDataProcessing\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="LabDrivers, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\ExcelDataProcessing\packages\LabDrivers.1.0.7\lib\net45\LabDrivers.dll</HintPath>
+      <HintPath>..\packages\LabDrivers.1.0.7\lib\net45\LabDrivers.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\ExcelDataProcessing\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+      <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
     </Reference>
     <Reference Include="Prism.Wpf, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\ExcelDataProcessing\packages\Prism.Wpf.7.1.0.431\lib\net45\Prism.Wpf.dll</HintPath>
+      <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -73,7 +73,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\ExcelDataProcessing\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -107,23 +107,23 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataProcessing.Core\Lab.Core.csproj">
+    <ProjectReference Include="..\Lab.Core\Lab.Core.csproj">
       <Project>{e642e60f-f60d-48d8-b127-837496a68b45}</Project>
       <Name>Lab.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataProcessingCommon\Lab.Common.csproj">
+    <ProjectReference Include="..\Lab.Common\Lab.Common.csproj">
       <Project>{59aa1495-a548-4606-a911-7bc48b539b4e}</Project>
       <Name>Lab.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataProcessingShellModule\Lab.ShellModule.csproj">
+    <ProjectReference Include="..\Lab.ShellModule\Lab.ShellModule.csproj">
       <Project>{8a0deefa-4ee9-40e7-9ae4-201801992e1a}</Project>
       <Name>Lab.ShellModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataProcessingTheme\Lab.Theme.csproj">
+    <ProjectReference Include="..\Lab.Theme\Lab.Theme.csproj">
       <Project>{4d019e8b-1db1-4630-9597-281242126549}</Project>
       <Name>Lab.Theme</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataProcessingUICommon\Lab.UICommon.csproj">
+    <ProjectReference Include="..\Lab.UICommon\Lab.UICommon.csproj">
       <Project>{b03160ea-6978-43ef-b445-e92bdc6679f2}</Project>
       <Name>Lab.UICommon</Name>
     </ProjectReference>
@@ -167,11 +167,11 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets" Condition="Exists('..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets')" />
+  <Import Project="..\packages\LabDrivers.1.0.7\build\LabDrivers.targets" Condition="Exists('..\packages\LabDrivers.1.0.7\build\LabDrivers.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets'))" />
+    <Error Condition="!Exists('..\packages\LabDrivers.1.0.7\build\LabDrivers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\LabDrivers.1.0.7\build\LabDrivers.targets'))" />
   </Target>
 </Project>

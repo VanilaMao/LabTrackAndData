@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E642E60F-F60D-48D8-B127-837496A68B45}</ProjectGuid>
+    <ProjectGuid>{59AA1495-A548-4606-A911-7BC48B539B4E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Lab.Core</RootNamespace>
-    <AssemblyName>Lab.Core</AssemblyName>
+    <RootNamespace>Lab.Common</RootNamespace>
+    <AssemblyName>Lab.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,16 +56,24 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\ExcelDataProcessing\packages\MathNet.Numerics.4.7.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\ExcelDataProcessing\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+      <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,13 +88,34 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataProcessingCoreModule.cs" />
-    <Compile Include="Normalize\INormalizer.cs" />
-    <Compile Include="Normalize\INormalizerFactory.cs" />
-    <Compile Include="Normalize\NormalizeObject.cs" />
-    <Compile Include="Normalize\NormalizeObjectSeries.cs" />
-    <Compile Include="Normalize\Normalizer.cs" />
-    <Compile Include="Normalize\NormalizerFactory.cs" />
+    <Compile Include="ApplicationHelpers\ApplicationInfo.cs" />
+    <Compile Include="ClipBoards\ClipBoards.cs" />
+    <Compile Include="ClipBoards\IClipBoards.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Commands\RelayCommandGeneric.cs" />
+    <Compile Include="Enums\CommandTypes.cs" />
+    <Compile Include="Enums\Status.cs" />
+    <Compile Include="EventMessages\EventParams.cs" />
+    <Compile Include="EventMessages\CommandSentEvent.cs" />
+    <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="Foundations\DefaultPlatformHelper.cs" />
+    <Compile Include="Foundations\IExecuteWithObject.cs" />
+    <Compile Include="Foundations\IExecuteWithObjectAndResult.cs" />
+    <Compile Include="Foundations\IPlatformHelper.cs" />
+    <Compile Include="Foundations\PlatformHelper.cs" />
+    <Compile Include="Foundations\WeakAction.cs" />
+    <Compile Include="Foundations\WeakActionGeneric.cs" />
+    <Compile Include="Foundations\WeakFuctionGeneric.cs" />
+    <Compile Include="Foundations\WeakFunction.cs" />
+    <Compile Include="Ioc\Ioc.cs" />
+    <Compile Include="Logging\ILogFactory.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILogService.cs" />
+    <Compile Include="Logging\Log4Logger.cs" />
+    <Compile Include="Logging\Log4NetFactory.cs" />
+    <Compile Include="Logging\LogService.cs" />
+    <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\IEventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +129,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RegionConstantNames.cs" />
+    <Compile Include="Utilities\ConsoleManager.cs" />
+    <Compile Include="Utilities\ExceptionUtilities.cs" />
+    <Compile Include="Utilities\NativeMethods.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelBaseExtension.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -113,11 +148,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataProcessingCommon\Lab.Common.csproj">
-      <Project>{59aa1495-a548-4606-a911-7bc48b539b4e}</Project>
-      <Name>Lab.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@
              xmlns:attachPropperties="clr-namespace:Lab.UICommon.AttachPropperties;assembly=Lab.UICommon"
              xmlns:dataProcessingCommon="clr-namespace:Lab.Common;assembly=Lab.Common"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             Title="Excel Data Processing" 
+             Title="LabApplication" 
              Width="800" 
              Height="600">
     <fluent:RibbonWindow.Resources>
@@ -20,10 +20,10 @@
             <converters:BooleanToInverserBooleanConverter x:Key="BooleanToInverserBooleanConverter"></converters:BooleanToInverserBooleanConverter>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
             <converters1:RibbonViewVisibilityConverter x:Key="RibbonViewVisibilityConverter"/>
-            <BitmapImage x:Key="OpenExcel" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/OpenExcel.png" />
-            <BitmapImage x:Key="ProcessExcel" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/Process.png" />
-            <BitmapImage x:Key="Save" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/Save.png" />
-            <BitmapImage x:Key="Logging" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/Logging.jpg" />
+            <BitmapImage x:Key="OpenExcel" UriSource="pack://application:,,,/Lab.UICommon;component/icons/OpenExcel.png" />
+            <BitmapImage x:Key="ProcessExcel" UriSource="pack://application:,,,/Lab.UICommon;component/icons/Process.png" />
+            <BitmapImage x:Key="Save" UriSource="pack://application:,,,/Lab.UICommon;component/icons/Save.png" />
+            <BitmapImage x:Key="Logging" UriSource="pack://application:,,,/Lab.UICommon;component/icons/Logging.jpg" />
             <Image x:Key="BackGroundCell" Source="../Icons/control_cell.png"></Image>
             <Image x:Key="Cell" Source="../Icons/CellSize.png"></Image>
             <Image x:Key="ShiftTop" Source="../Icons/arrow_up_shift.png"></Image>

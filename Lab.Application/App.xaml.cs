@@ -100,9 +100,9 @@ namespace Lab.Application
         private static void RegisterLogging(IContainerRegistry containerRegistry)
         {
 #if DEBUG
-            const string resourceName = "ExcelDataProcessing.log4net.debug.config";
+            const string resourceName = "Lab.Application.log4net.debug.config";
 #else
-            const string resourceName = "ExcelDataProcessing.log4net.release.config";
+            const string resourceName = "Lab.Application.log4net.release.config";
 #endif
             Log4NetFactory.ConfigureLog4Net(typeof(App).Assembly, resourceName);
             containerRegistry.Register(typeof(ILogFactory),typeof(Log4NetFactory));

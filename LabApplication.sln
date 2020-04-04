@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Application", "Lab.Application.csproj", "{A1F2F573-D598-4F79-800D-0C7046C4E7D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Application", "Lab.Application\Lab.Application.csproj", "{A1F2F573-D598-4F79-800D-0C7046C4E7D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelProcessingModule", "..\ExcelProcessingModule\ExcelProcessingModule.csproj", "{B75F5E8D-6F90-4CE4-9077-7F52F1F24571}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelProcessingModule", "ExcelProcessingModule\ExcelProcessingModule.csproj", "{B75F5E8D-6F90-4CE4-9077-7F52F1F24571}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Common", "..\DataProcessingCommon\Lab.Common.csproj", "{59AA1495-A548-4606-A911-7BC48B539B4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Common", "Lab.Common\Lab.Common.csproj", "{59AA1495-A548-4606-A911-7BC48B539B4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.UICommon", "..\DataProcessingUICommon\Lab.UICommon.csproj", "{B03160EA-6978-43EF-B445-E92BDC6679F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.UICommon", "Lab.UICommon\Lab.UICommon.csproj", "{B03160EA-6978-43EF-B445-E92BDC6679F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Theme", "..\DataProcessingTheme\Lab.Theme.csproj", "{4D019E8B-1DB1-4630-9597-281242126549}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Theme", "Lab.Theme\Lab.Theme.csproj", "{4D019E8B-1DB1-4630-9597-281242126549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Core", "..\DataProcessing.Core\Lab.Core.csproj", "{E642E60F-F60D-48D8-B127-837496A68B45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Core", "Lab.Core\Lab.Core.csproj", "{E642E60F-F60D-48D8-B127-837496A68B45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Controls", "DataProcessing.Controls\Lab.Controls.csproj", "{C6EFDCC9-993F-49B3-BEFD-9A2CB14E92CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.Controls", "Lab.Controls\Lab.Controls.csproj", "{C6EFDCC9-993F-49B3-BEFD-9A2CB14E92CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ShellModule", "..\DataProcessingShellModule\Lab.ShellModule.csproj", "{8A0DEEFA-4EE9-40E7-9AE4-201801992E1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ShellModule", "Lab.ShellModule\Lab.ShellModule.csproj", "{8A0DEEFA-4EE9-40E7-9AE4-201801992E1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.Platform", "..\Tracking.Platform\Tracking.Platform.csproj", "{2E42EB09-CA62-4516-8A08-333723D2358D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.Platform", "Tracking.Platform\Tracking.Platform.csproj", "{2E42EB09-CA62-4516-8A08-333723D2358D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.CameraModule", "..\Tracking.CameraModule\Tracking.CameraModule.csproj", "{E9A3F8D8-5573-4A78-8BB8-5CC9145CC3B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.CameraModule", "Tracking.CameraModule\Tracking.CameraModule.csproj", "{E9A3F8D8-5573-4A78-8BB8-5CC9145CC3B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.ProcessModule", "..\Tracking.ProcessModule\Tracking.ProcessModule.csproj", "{88C6382F-94A5-4ECF-8522-D46E8A42584D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.ProcessModule", "Tracking.ProcessModule\Tracking.ProcessModule.csproj", "{88C6382F-94A5-4ECF-8522-D46E8A42584D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.StageModule", "..\Tracking.StageModule\Tracking.StageModule.csproj", "{4C8B9AB1-D3F0-43D2-BD87-D8E8CDD7A880}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking.StageModule", "Tracking.StageModule\Tracking.StageModule.csproj", "{4C8B9AB1-D3F0-43D2-BD87-D8E8CDD7A880}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
