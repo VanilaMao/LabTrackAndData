@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Chevron-left.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Chevron-right.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Arrow-down.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Arrow-top.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Arrow-left.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Arrow-right.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="SettingVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Delete.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="SaveVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Center.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="StopPlayVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Play.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="PencilMarker.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="LookingUp.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

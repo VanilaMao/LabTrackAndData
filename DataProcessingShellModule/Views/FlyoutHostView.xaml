@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Lab.ShellModule.Views.FlyoutHostView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:regions="http://prismlibrary.com/"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:Lab.ShellModule.Behaviors"
+             xmlns:converters="clr-namespace:Lab.UICommon.Converters;assembly=Lab.UICommon"
+             xmlns:flyouts="clr-namespace:Lab.Controls.Flyouts;assembly=Lab.Controls"
+             xmlns:dataProcessingCommon="clr-namespace:Lab.Common;assembly=Lab.Common"
+             mc:Ignorable="d" 
+             regions:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:DockPositionToMahappsPositionConverter x:Key="DockPositionToMahappsPositionConverter" />
+        <converters:WidthStarSizeConverter x:Key="WidthStarSizeConverter" />
+        <Image x:Key="SaveIcon" Source="../Icons/Save.png"/>
+        <Image x:Key="CancelIcon" Source="../Icons/cancel1.png"></Image>
+    </UserControl.Resources>
+    <Grid x:Name="RootContainer">
+        <flyouts:FlyoutContainer x:Name="FlyoutContainer" Grid.Row="0">
+            <Grid>
+
+                <ContentControl regions:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.ExcelDataGridViewRegion}" />
+            </Grid>
+            <flyouts:FlyoutContainer.FlyoutsControl>
+                <mah:FlyoutsControl MaxWidth="{Binding ElementName=RootContainer, Path=ActualWidth}"
+                                         MaxHeight="{Binding ActualHeight, ElementName=RootContainer}"
+                                         Width="{Binding ActualWidth, ElementName=RootContainer}">
+                    <mah:Flyout
+                                     MaxWidth="{Binding ElementName=RootContainer, Path=ActualWidth}"
+                                     x:Name="Flyout"
+                                     Header="{Binding Flyout.DisplayName}"
+                                     Position="{Binding Flyout.SlideDirection, Converter={StaticResource DockPositionToMahappsPositionConverter}}"
+                                     MaxHeight="{Binding ElementName=RootContainer, Path=ActualHeight}"
+                                     Height="{Binding ActualHeight, ElementName=RootContainer}"
+                                     IsOpen="{Binding Flyout.IsFlyoutOpen}"
+                                     CloseCommand ="{Binding Flyout.CloseCommand}"
+                                     Foreground="#666666">
+                        <mah:Flyout.Width>
+                            <MultiBinding Converter="{StaticResource WidthStarSizeConverter}">
+                                <Binding Path="Flyout.Length"/>
+                                <Binding ElementName="RootContainer" Path="ActualWidth" />
+                                <Binding RelativeSource="{RelativeSource Self}"/>
+                            </MultiBinding>
+                        </mah:Flyout.Width>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="60"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <ContentControl regions:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.FlyoutContentRegion}">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:ShowFlyOutBehavior Flyout="{Binding Flyout}"/>
+                                </i:Interaction.Behaviors>
+                            </ContentControl>
+                            <DockPanel Grid.Row="1"  Background="GhostWhite" >
+                                <xctk:IconButton   Height="30" IconLocation="Left"  Icon="{StaticResource CancelIcon}" Command="{Binding Flyout.CancelCommand}" DockPanel.Dock="Right" Width="90" Margin="20,0" Content=" Cancel">
+                                </xctk:IconButton>
+
+                                <xctk:IconButton Height="30" IconLocation="Left" Content=" Save" Icon="{StaticResource SaveIcon}"  Command="{Binding Flyout.SaveCommand}" Width="90" DockPanel.Dock="Right" Margin="30,0,0,0" HorizontalAlignment="Right">
+                                </xctk:IconButton>
+                            </DockPanel>
+                        </Grid>
+                    </mah:Flyout>
+                </mah:FlyoutsControl>
+            </flyouts:FlyoutContainer.FlyoutsControl>
+        </flyouts:FlyoutContainer>
+    </Grid>
+</UserControl>

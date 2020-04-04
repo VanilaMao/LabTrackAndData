@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:flyoutControls="clr-namespace:Lab.Controls.Flyouts">
+  <SolidColorBrush x:Key="GrayedOutFlyout" Opacity=".5" Color="Black"/>
+
+    <ControlTemplate x:Key="FlyoutControlTemplate" TargetType="{x:Type flyoutControls:FlyoutContainer}">
+        <Grid>
+            <AdornerDecorator>
+                <ContentPresenter ContentSource="Content"/>
+            </AdornerDecorator>
+            <Border x:Name="PART_FlyoutRoot"
+                    Background="{TemplateBinding Background}"
+                    Opacity="{TemplateBinding Opacity}"
+                    Visibility="Hidden">
+                <ContentPresenter Content="{TemplateBinding FlyoutsControl}" Opacity="1"/>
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type flyoutControls:FlyoutContainer}">
+        <Setter Property="Template" Value="{StaticResource FlyoutControlTemplate}"/>
+        <Setter Property="Background" Value="{StaticResource GrayedOutFlyout}"></Setter>
+    </Style>
+</ResourceDictionary>

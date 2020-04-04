@@ -1,0 +1,221 @@
+﻿<fluent:RibbonWindow  x:Class="Lab.ShellModule.Views.ShellWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:fluent="urn:fluent-ribbon"
+             xmlns:prism="http://prismlibrary.com/"
+
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+
+             xmlns:converters1="clr-namespace:Lab.ShellModule.Converters"
+             xmlns:converters="clr-namespace:Lab.UICommon.Converters;assembly=Lab.UICommon"
+             xmlns:attachPropperties="clr-namespace:Lab.UICommon.AttachPropperties;assembly=Lab.UICommon"
+             xmlns:dataProcessingCommon="clr-namespace:Lab.Common;assembly=Lab.Common"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Title="Excel Data Processing" 
+             Width="800" 
+             Height="600">
+    <fluent:RibbonWindow.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToInverserBooleanConverter x:Key="BooleanToInverserBooleanConverter"></converters:BooleanToInverserBooleanConverter>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+            <converters1:RibbonViewVisibilityConverter x:Key="RibbonViewVisibilityConverter"/>
+            <BitmapImage x:Key="OpenExcel" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/OpenExcel.png" />
+            <BitmapImage x:Key="ProcessExcel" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/Process.png" />
+            <BitmapImage x:Key="Save" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/Save.png" />
+            <BitmapImage x:Key="Logging" UriSource="pack://application:,,,/DataProcessingUICommon;component/icons/Logging.jpg" />
+            <Image x:Key="BackGroundCell" Source="../Icons/control_cell.png"></Image>
+            <Image x:Key="Cell" Source="../Icons/CellSize.png"></Image>
+            <Image x:Key="ShiftTop" Source="../Icons/arrow_up_shift.png"></Image>
+            <Image x:Key="GroupProcessing" Source="../Icons/Group_process.jpg"></Image>
+            <Style TargetType="fluent:RibbonGroupBoxWrapPanel" BasedOn="{StaticResource {x:Type fluent:RibbonGroupBoxWrapPanel}}">
+                <Setter Property="HorizontalAlignment" Value="Center"> </Setter>
+                <Setter Property="VerticalAlignment" Value="Center"> </Setter>
+                <Setter Property="Margin" Value="35"></Setter>
+            </Style>
+            <DataTemplate x:Key="ImageButtonTemplate">
+                <Grid>
+                    <Image Width="50" Height="50"                
+                           Source="{Binding}"></Image>
+                </Grid>
+            </DataTemplate>
+            <Style x:Key="ImageButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="IsDefault" Value="True"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.6"></Setter>
+                     </Trigger>
+                    <Trigger Property="IsEnabled" Value="True">
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </fluent:RibbonWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding FileName, Mode=OneWay}"></TextBlock>
+        <fluent:Ribbon Grid.Row="1" AutomaticStateManagement="False" ContentHeight="132"
+                       Name="Ribbon"
+                       >
+            <!--Backstage-->
+            <!--<fluent:Ribbon.Menu>
+                <fluent:Backstage>
+                </fluent:Backstage>
+            </fluent:Ribbon.Menu>-->
+
+            <!--Quick Access Toolbar Items-->
+            <fluent:Ribbon.QuickAccessItems >
+                <!--Use Content or Target Property to set QAT item-->
+                <fluent:QuickAccessMenuItem IsChecked="true" Visibility="Visible" >
+                    <fluent:Button Header="Log Location" Icon="{StaticResource Logging}" Padding="0" LargeIcon="{StaticResource Logging}" Command="{Binding ShowLogCommand}" Size="Large" 
+                                   SizeDefinition="16,24,36"/>
+                </fluent:QuickAccessMenuItem>
+            </fluent:Ribbon.QuickAccessItems>
+
+            <fluent:RibbonTabItem Header="Tracking" >
+                <fluent:RibbonGroupBox Header="Camera Settings" >
+                    <ContentControl Name="CamerViewSettings" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.CameraViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Record Options">
+                    <ContentControl Name="Record" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.CameraRecordingViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Stage Settings">
+                    <ContentControl Name="TrackingView" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.TrackingOptionsViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Process Settings">
+                    <ContentControl Name="ProcessSettingView" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.ProcessSettingViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Process Options">
+                    <ContentControl Name="ProcessOptionsView" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.ProcessOptionsViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Other &amp; Status">
+                    <ContentControl Name="ProcessStatusView" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.ProcessStatusViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Calibration">
+                    <ContentControl Name="CalibrationView" prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.CalibrationViewRegion}"></ContentControl>
+                </fluent:RibbonGroupBox>
+            </fluent:RibbonTabItem>
+
+                <!--Tabs-->
+            <fluent:RibbonTabItem Header="Data">
+                <fluent:RibbonGroupBox Header="Excel" Width="120"
+                                       HorizontalContentAlignment="Center"
+                                       >
+                    <Button Command="{Binding ExcelLoadCommand}" Margin="0,10,0,0" Padding="5"
+                            IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanToInverserBooleanConverter}}"
+                            Style="{StaticResource ImageButtonStyle}" 
+                            Content="{StaticResource OpenExcel}"
+                            ContentTemplate="{StaticResource ImageButtonTemplate}"
+                            >
+                    </Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Process" Width="120" HorizontalContentAlignment="Center">
+                    <Button Command="{Binding ExcelProcessCommand}" Margin="0,10,0,0" Padding="5"
+                            IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanToInverserBooleanConverter}}"
+                            ContentTemplate="{StaticResource ImageButtonTemplate}"
+                            Content="{StaticResource ProcessExcel}"
+                            Style="{StaticResource ImageButtonStyle}"
+                           
+                            >
+                    </Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Save" Width="120" HorizontalContentAlignment="Center">
+                    <Button Command="{Binding SaveExcelCommand}" Margin="0,10,0,0" Padding="5"
+                            IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanToInverserBooleanConverter}}"
+                            ContentTemplate="{StaticResource ImageButtonTemplate}"
+                            Content="{StaticResource Save}"
+                            Style="{StaticResource ImageButtonStyle}">
+                    </Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox x:Name="Channel"  Header="Channel Settings" Width="160" 
+                                       KeyTip="Setting the Channels of backgound Cell and Cells"
+                                       LauncherToolTip="Setting the Channels of backgound Cell and Cells"
+                                       HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch">
+                    <Grid Height="{Binding Path=ActualHeight, ElementName=Channel}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"></RowDefinition>
+                            
+                            <RowDefinition Height="40*"></RowDefinition>
+                            <RowDefinition Height="20*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <DockPanel Grid.Row="0" VerticalAlignment="Stretch" ToolTip="BackGround Cell Channel Length">
+                            <!--<CheckBox IsChecked="{Binding SettingModel.HasBackgoundCell}" VerticalAlignment="Center"></CheckBox>-->
+                            <ToggleButton Content="{StaticResource BackGroundCell}" IsChecked="{Binding  SettingModel.HasBackgoundCell, Mode=TwoWay}" 
+                                          BorderThickness="0" Padding="0"
+                                           
+                                                 >
+                            </ToggleButton>
+                            <StackPanel Orientation="Horizontal"  Margin="0,5" IsEnabled="{Binding  SettingModel.HasBackgoundCell, Mode=OneWay}">
+                                <Label VerticalContentAlignment="Bottom">Channel:</Label>
+                                <TextBox Text="{Binding SettingModel.BackGroundCellLength, Mode=TwoWay}" BorderThickness="0,0,0,1" Width="30"
+                                         VerticalContentAlignment="Bottom" Margin="5,-20,0,5" HorizontalContentAlignment="Center"
+                                         attachPropperties:EditBoxPressKeyUpdateSourceAttachProperties.UpdateSourceOnKey="Enter"
+                                         ></TextBox>
+                            </StackPanel>
+
+                        </DockPanel>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5,5" VerticalAlignment="Stretch" ToolTip="Cell Channel Length">
+                            <xctk:IconButton Icon="{StaticResource Cell}" BorderThickness="0"
+                            ></xctk:IconButton>
+
+                            <Label VerticalContentAlignment="Bottom" Margin="5,0,0,0">Channel:</Label>
+                            <TextBox Text="{Binding SettingModel.CellLength, Mode=TwoWay}" BorderThickness="0,0,0,1" VerticalAlignment="Bottom" 
+                                     Width="30"
+                                     attachPropperties:EditBoxPressKeyUpdateSourceAttachProperties.UpdateSourceOnKey="Enter"
+                                     HorizontalContentAlignment="Center" Margin="5,0,5,5"></TextBox>
+                        </StackPanel>
+                    </Grid>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Processing Settings" Width="140" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" Width="120" Margin="7,5,0,0">
+                        <mah:ToggleSwitch VerticalAlignment="Center" HorizontalAlignment="Stretch" 
+                                          IsChecked="{Binding SettingModel.ShiftTimeWhenErrasingData, Mode=TwoWay}"
+                                          ToolTip="The times will shift top or not if deleting rows"
+                                          OffLabel="No Shift"
+                                          OnLabel="Shift Top"
+                        ></mah:ToggleSwitch>
+                        <mah:ToggleSwitch VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                          IsChecked="{ Binding SettingModel.ProcessingBySheet, Mode=TwoWay}"
+                                          OffLabel="Process All"
+                                          ToolTip="Processing all the sheets or just current sheet"
+                                          OnLabel="Process One"></mah:ToggleSwitch>
+
+                    </StackPanel>
+
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="Export Settings" Width="120" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" Width="110" Margin="4,5,0,0">
+                    <mah:ToggleSwitch VerticalAlignment="Center" HorizontalAlignment="Stretch" 
+                                      IsChecked="{Binding SettingModel.ExportSingleColumn, Mode=TwoWay}"
+                                      ToolTip="Export single column or all data"
+                                      OffLabel="All Data"
+                                      OnLabel="Delta Only"
+                    ></mah:ToggleSwitch>
+                    </StackPanel>
+                </fluent:RibbonGroupBox>
+            </fluent:RibbonTabItem>
+            
+        </fluent:Ribbon>
+
+        <Grid Grid.Row="2" Visibility="{Binding Path=SelectedTabIndex, ElementName=Ribbon, Converter={StaticResource RibbonViewVisibilityConverter}, ConverterParameter=0}">
+            <ContentControl prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.ProcessImageViewRegion}"></ContentControl>
+        </Grid>
+
+        <Grid Grid.Row="2" Visibility="{Binding Path=SelectedTabIndex, ElementName=Ribbon,Converter={StaticResource RibbonViewVisibilityConverter}, ConverterParameter=1}">
+            <ContentControl prism:RegionManager.RegionName="{x:Static dataProcessingCommon:RegionConstantNames.ExcelViewRegion}"></ContentControl>
+            <TextBlock Text="{Binding LoadingMessage}" FontSize="50" Foreground="Crimson"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}"></TextBlock>
+        </Grid> 
+    </Grid>
+</fluent:RibbonWindow>
+

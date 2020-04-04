@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Speed.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Axis.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="AxisX.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="AxisY.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Mark.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Upload.xaml"></ResourceDictionary>
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

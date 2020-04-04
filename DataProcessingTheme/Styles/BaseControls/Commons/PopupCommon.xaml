@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:converters="clr-namespace:Lab.Theme.Converters">
+    <converters:PopupPlacementRectangleConverter x:Key="PopupPlacementRectangleConverter"/>
+
+    <SolidColorBrush x:Key="Popup.Background.Normal">White</SolidColorBrush>
+    <SolidColorBrush x:Key="Popup.Foreground.Normal">#343434</SolidColorBrush>
+
+    <system:Double x:Key="Popup.FontSize">14</system:Double>
+
+    <DropShadowEffect x:Key="Popup.DropShadowEffect" BlurRadius="5" Opacity="0.4" ShadowDepth="0"/>
+    <Thickness x:Key="Popup.DropShadowThickness">5</Thickness>
+</ResourceDictionary>

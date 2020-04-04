@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Maximize.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Minimize.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="AreaRange.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="LengthRange.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Algorithm.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CastBits.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Brightness.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="MoreDots.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="OneDot.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Recording/CloseCameraVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Recording/OpenCameraVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Recording/RecordingVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Recording/StopCameraVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Recording/RecordTimerVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CropVector.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CropVector-bottom.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CropVector-left.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CropVector-right.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CropVector-top.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="CutEndge.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="TimerBoard.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

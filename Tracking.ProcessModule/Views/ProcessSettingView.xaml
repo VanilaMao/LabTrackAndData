@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="Tracking.ProcessModule.Views.ProcessSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:labImage="clr-namespace:LabImage;assembly=LabImage"
+             xmlns:converters1="clr-namespace:Lab.ShellModule.Converters;assembly=Lab.ShellModule"
+             xmlns:markups1="clr-namespace:Lab.ShellModule.Markups;assembly=Lab.ShellModule"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters1:EnumDescriptionTypeConverter x:Key="EnumDescriptionTypeConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel MinWidth="180" Margin="5,0">
+        <StackPanel DockPanel.Dock="Right" Margin="5,5,5,0">
+            <StackPanel Width="24" Margin="0,5" >
+                <StackPanel.ToolTip>
+                    <TextBlock>
+                        Change the value to get more objects, 
+                        <LineBreak/>
+                        the bigger value, the more objects, if pick dark is selected
+                        <LineBreak/>
+                        the smaller value, the more objects, if pick bright is selected
+                    </TextBlock>
+                </StackPanel.ToolTip>
+                <Path Data="{StaticResource MoreDots}" Width="16" Height="16" Stretch="Uniform" ></Path>
+                <Slider Minimum="0" Maximum="1" Name="Slider" Height="64" Orientation="Vertical" FlowDirection="RightToLeft" 
+                         Width="24" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="2" 
+                        Value="{Binding SettingModel.ProcessSettings.ProcessOptions.ThreshHoldFactor}"
+                       Ticks="0.1"></Slider>
+                
+            </StackPanel>
+            <TextBlock Text="{Binding Value, ElementName=Slider,StringFormat=N2}" HorizontalAlignment="Center" Margin="0,2" ></TextBlock>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right" Margin="5">
+            
+            <mah:ToggleSwitch  VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" ContentDirection="RightToLeft"
+                               Margin="5,0" 
+                              IsChecked="{ Binding SettingModel.ProcessSettings.ProcessOptions.PickDark, Mode=TwoWay}"
+                              OffLabel="Pick Bright"
+                              ToolTip="For a bio object, for expamle, pick Bright means you are trying to get process area of the object"
+                              OnLabel="Pick Dark"></mah:ToggleSwitch>
+            <StackPanel Orientation="Horizontal" TextElement.Foreground="Blue" Margin="5,5">
+                <Path Data="{StaticResource Algorithm}" Width="18" Height="18" Stretch="Uniform"></Path>
+                <ComboBox Width="100" ItemsSource="{Binding Source={markups1:EnumBindingSource {x:Type labImage:ProcessBlobMethod}}}"
+                          SelectedItem="{Binding SettingModel.ProcessSettings.ProcessOptions.MethodType,Converter={StaticResource EnumDescriptionTypeConverter}}"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Path Data="{StaticResource CastBits}" Width="16" Height="16" Stretch="Uniform"></Path>
+                <TextBox Text="{Binding SettingModel.ProcessSettings.ProcessOptions.CastBits,Mode=TwoWay}" BorderThickness="0,0,0,1" Margin="10,0"></TextBox>
+            </StackPanel>
+           
+        </StackPanel>
+        <StackPanel  DockPanel.Dock="Left">
+            <StackPanel Orientation="Horizontal" TextElement.Foreground="DeepPink">
+                <StackPanel>
+                    <Path Data="{StaticResource AreaRange}" Width="48" Height="48" Stretch="Uniform"></Path>
+                    <TextBlock Text="Area" Margin="10,0"></TextBlock>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource Minimize}" Width="16" Height="16" Stretch="Uniform"></Path>
+                        <TextBox Text="{Binding SettingModel.ProcessSettings.ProcessOptions.MinArea}" BorderThickness="0,0,0,1" Margin="5,0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                        <Path Data="{StaticResource Maximize}" Width="16" Height="16" Stretch="Uniform"></Path>
+                        <TextBox Text="{Binding SettingModel.ProcessSettings.ProcessOptions.MaxArea}"  BorderThickness="0,0,0,1" Margin="5,0"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" TextElement.Foreground="DeepPink">
+                <StackPanel Width="48">
+                    <Path Data="{StaticResource LengthRange}" Width="48" Height="32" Stretch="Uniform"></Path>
+                    <TextBlock Text="Length" Margin="3,0"></TextBlock>
+                </StackPanel>
+                <StackPanel Margin="5,2">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource Minimize}" Width="16" Height="16" Stretch="Uniform"></Path>
+                        <TextBox Text="{Binding SettingModel.ProcessSettings.ProcessOptions.MinLength}" BorderThickness="0,0,0,1" Margin="5,0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                        <Path Data="{StaticResource Maximize}" Width="16" Height="16" Stretch="Uniform"></Path>
+                        <TextBox Text="{Binding SettingModel.ProcessSettings.ProcessOptions.MaxLength}"  BorderThickness="0,0,0,1" Margin="5,0"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

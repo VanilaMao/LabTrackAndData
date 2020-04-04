@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <PathGeometry x:Key="ArrowLeft" 
+                  Figures="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z" 
+                  FillRule="Nonzero"></PathGeometry>
+</ResourceDictionary>

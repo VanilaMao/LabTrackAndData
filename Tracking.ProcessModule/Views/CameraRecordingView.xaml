@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Tracking.ProcessModule.Views.CameraRecordingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:views="clr-namespace:Tracking.ProcessModule.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" MinWidth="200"  Margin="5,20,5,0">
+            <views:CameraRecordingActionView/>
+            <DockPanel TextElement.Foreground="Green" Margin="5">
+                <TextBox Text="{Binding SettingModel.ProcessSettings.RecordingTime}" DockPanel.Dock="Bottom" BorderThickness="0,0,0,1" Margin="5,0,0,0"></TextBox>
+                <Path Data="{StaticResource RecordTimerVector}" Stretch="Uniform" Width="36" Height="36" DockPanel.Dock="Top" ></Path>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

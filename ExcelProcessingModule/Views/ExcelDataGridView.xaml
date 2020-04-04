@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="ExcelProcessingModule.Views.ExcelDataGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:viewModels="clr-namespace:ExcelProcessingModule.ViewModels"
+             xmlns:modelViewModels="clr-namespace:ExcelProcessingModule.ModelViewModels"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:ExcelProcessingModule.Behaviors"
+             xmlns:converters="clr-namespace:ExcelProcessingModule.Converters"
+             xmlns:attachProperties="clr-namespace:ExcelProcessingModule.AttachProperties"
+             xmlns:helpers="clr-namespace:Lab.UICommon.Helpers;assembly=Lab.UICommon"
+             xmlns:bindable="clr-namespace:Lab.UICommon.Bindable;assembly=Lab.UICommon"
+
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewModels:ExcelDataGridViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <helpers:BindingProxy x:Key="BindingProxy" Data="{Binding}"></helpers:BindingProxy>
+            <converters:BaseLineConverter x:Key="BaseLineConverter"></converters:BaseLineConverter>
+            <SolidColorBrush x:Key="HighLightBrush" Color="Red"></SolidColorBrush>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+            <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader} }">
+                <Setter Property="bindable:Action.Target" Value="{Binding Path=DataContext, 
+                    RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"></Setter>
+                <Setter Property="bindable:Message.Attach" Value="[Event PreviewMouseRightButtonDown]=[Action DoSomething($source)]" />
+            </Style>
+            <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource {x:Type DataGridRow} }">
+                <Setter Property="bindable:Action.Target" Value="{Binding Path=DataContext, 
+                    RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"></Setter>
+                <Setter Property="bindable:Message.Attach" Value="[Event PreviewMouseRightButtonDown]=[Action DoSomething($source)]" />
+                <!--<Setter Property="Background" Value="Transparent"></Setter>-->
+                <!--<Style.Triggers>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Value="True">
+                                <Condition.Binding>
+                                    <MultiBinding Converter="{StaticResource BaseLineConverter}">
+                                        <Binding Path="DataContext.TimeWindowBeginLine" RelativeSource="{RelativeSource AncestorType={x:Type DataGrid}}"></Binding>
+                                        <Binding Path="DataContext.TimeWindowEndLine" RelativeSource="{RelativeSource AncestorType={x:Type DataGrid}}"></Binding>
+                                        <Binding RelativeSource="{RelativeSource Self}"></Binding>
+                                    </MultiBinding>
+                                </Condition.Binding>
+                            </Condition>
+                        </MultiDataTrigger.Conditions>
+                        <Setter Property="Background" Value="Red"></Setter>
+                    </MultiDataTrigger>
+                </Style.Triggers>-->
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl ItemsSource="{Binding ExcelDatas}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+            <TabControl.ItemTemplate>
+                <DataTemplate DataType="modelViewModels:ExcelDataModel">
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate DataType="modelViewModels:ExcelDataModel">
+                    <Grid>
+                        <DockPanel >
+
+                            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Height="14">
+                                <TextBlock Text="T0: " Foreground="Red" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding TimeZeroLineNumber}" ></TextBlock>
+                                <TextBlock Text="   Time(sec): "></TextBlock>
+                                <TextBlock Text="{Binding SelectedTime}"></TextBlock>
+                                <TextBlock Text="   |"/>
+
+                                <TextBlock Text=" Time Window Start Points:  " Foreground="Red" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding TimeWindowBeginLine}"></TextBlock>
+                                <TextBlock Text=", Time(sec):  "></TextBlock>
+                                <TextBlock Text="{Binding SelectedTimeWindowStartTime}"></TextBlock>
+                                <TextBlock Text="   |"/>
+
+                                <TextBlock Text=" Time Window End Points:  " Foreground="Red" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding TimeWindowEndLine}"></TextBlock>
+                                <TextBlock Text=", Time(sec):  "></TextBlock>
+                                <TextBlock Text="{Binding SelectedTimeWindowEndTime}"></TextBlock>
+                            </StackPanel>
+
+
+
+                            <DataGrid x:Name="Grid" Margin="1" ItemsSource="{Binding DataTable.DefaultView, IsAsync=True}" 
+                                  VirtualizingStackPanel.IsVirtualizing="true" 
+                                  EnableColumnVirtualization ="True"
+                                  EnableRowVirtualization = "True"
+                                  CanUserSortColumns="False"
+                                  AutoGenerateColumns="True"
+                                  HeadersVisibility="Column"
+                                  >
+                                <DataGrid.Resources>
+                                    <helpers:BindingProxy Data="{Binding}" x:Key="DataGridProxy"></helpers:BindingProxy>
+                                </DataGrid.Resources>
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu  >
+                                        <!--bindable:Action.Target ="{Binding Path=Data, Source={StaticResource DataGridProxy}}"
+                                    bindable:Message.Attach="[Event Closed]=[Action CloseMenu()]"-->
+                                        <MenuItem Header="Set T0 Position" Command="{Binding SetTimeZeroCommand}" />
+                                        <MenuItem Header="Average Time Window Begin " Command="{Binding SetTimeWindowBeginCommand}" />
+                                        <MenuItem Header="Average Time Window End" Command="{Binding SetTimeWindowEndCommand}" />
+                                        <MenuItem Header="Copy BaseLine Average Values" Command="{Binding CopyToBoardCommand}"></MenuItem>
+                                        <Separator></Separator>
+                                        <MenuItem Header="Delete Rows" Command="{Binding DeleteRowsCommand}" ></MenuItem>
+                                        <Separator></Separator>
+                                        <MenuItem Header="Delete Cells" Command="{Binding DeleteCellsCommand}"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                                <i:Interaction.Behaviors>
+                                    <behaviors:DataGridHighLightBehavior BaseLineStart="{Binding TimeWindowBeginLine, Mode=OneWay}" BaseLineEnd="{Binding TimeWindowEndLine, Mode=OneWay}" BackgroundBrush="{StaticResource HighLightBrush}"/>
+                                    <behaviors:DataGridClickedLineBehavior Line="{Binding LineNumber,Mode=TwoWay}" MutipleLine="{Binding MutipleLine, Mode=TwoWay}"/>
+                                    <behaviors:DataGridColumnGenerateToolTipBehavior 
+                                    AverageBaseLines="{Binding AverageBaseLines}"
+                                    ToolTipFormat ="Base Line Average : &#10;   {0}"
+                                    />
+                                </i:Interaction.Behaviors>
+                            </DataGrid>
+
+
+                        </DockPanel>
+                        <TextBlock Text="Reloading Data... please stand by.." FontSize="50" Foreground="Crimson"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                   Visibility="{Binding ReLoading, Converter={StaticResource BooleanToVisibilityConverter}}"></TextBlock>
+                    </Grid>
+                   
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+        
+    </Grid>
+</UserControl>

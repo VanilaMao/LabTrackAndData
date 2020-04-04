@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Tracking.ProcessModule.Views.ProcessOptionActionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:bindable1="clr-namespace:Lab.UICommon.Bindable;assembly=Lab.UICommon"
+             mc:Ignorable="d" 
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel >
+        <StackPanel Orientation="Horizontal" TextElement.Foreground="Green" Margin="5,0">
+            <Button BorderThickness="0,0,0,0" Padding="1" HorizontalAlignment="Left" TextElement.Foreground="Green" Margin="2,0" 
+                    bindable1:Message.Attach="Save">
+                <Path Data="{StaticResource SaveVector}"  Stretch="Fill" Width="28" Height="28"></Path>
+            </Button>
+            <TextBlock Text="Save" Margin="2,0,0,0" FontWeight="Bold" FontSize="14" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <mah:ToggleSwitch  VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" ContentDirection="RightToLeft"
+                           Margin="5,2" 
+                           IsChecked="{ Binding IsSaving, Mode=TwoWay}"
+                           OffLabel="Disable Save"
+                           ToolTip=""
+                           OnLabel="Enable Save"></mah:ToggleSwitch>
+        <mah:ToggleSwitch  VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" ContentDirection="RightToLeft"
+                           Margin="5,0,5,2"
+                           IsChecked="{ Binding IsTracking, Mode=TwoWay}"
+                           OffLabel="UnTracked"
+                           ToolTip=""
+                           OnLabel="Tracked"></mah:ToggleSwitch>
+
+    </StackPanel>
+</UserControl>

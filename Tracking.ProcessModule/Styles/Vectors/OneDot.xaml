@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <PathGeometry x:Key="OneDot" 
+                  Figures="M24 24H0V0h24v24z"
+                  
+                  FillRule="Nonzero"></PathGeometry>
+</ResourceDictionary>

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--NORMAL-->
+    <SolidColorBrush x:Key="ItemContainer.Normal.Foreground">#656565</SolidColorBrush>
+
+    <!--SELECTED: standard selection for ItemsControls that support selection-->
+    <SolidColorBrush x:Key="ItemContainer.Selected.Background">#288dc8</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemContainer.Selected.Foreground">White</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemContainer.Selected.BorderBrush">#288dc8</SolidColorBrush>
+
+    <!--SELECTED INACTIVE: same as selected, but shown when the control does not have focus-->
+    <SolidColorBrush x:Key="ItemContainer.SelectedInactive.Background">#93C5E3</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemContainer.SelectedInactive.Foreground">White</SolidColorBrush>
+
+    <!--SELECTED INVERTED: used to represent selection or active states in situations that call for inverted colors-->
+    <SolidColorBrush x:Key="ItemContainer.SelectedInverted.Background">White</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemContainer.SelectedInverted.Foreground">#288dc8</SolidColorBrush>
+
+    <!--HIGHLIGHTED: AKA "MouseOver" or "Hover" states-->
+    <SolidColorBrush x:Key="ItemContainer.Highlighted.Background">#f0f7fb</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemContainer.Highlighted.Foreground">#288dc8</SolidColorBrush>
+    <SolidColorBrush x:Key="ItemContainer.Highlighted.BorderBrush">#288dc8</SolidColorBrush>
+
+    <SolidColorBrush x:Key="ItemSeparator.Normal.Foreground">#D6D6D6</SolidColorBrush>
+
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BaseControls/ToolTipStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Flyouts/FlyoutStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Mahapps/ToggleSwitchStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/ToggleButtonStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/CheckBoxStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/ButtonStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/PathStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="../Vectors/_vectorLibrary.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/ComboBoxStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/ComboBoxItemStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="BaseControls/TextBoxStyle.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

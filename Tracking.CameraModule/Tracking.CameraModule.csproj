@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9A3F8D8-5573-4A78-8BB8-5CC9145CC3B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tracking.CameraModule</RootNamespace>
+    <AssemblyName>Tracking.CameraModule</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\ExcelDataProcessing\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="LabDrivers, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\ExcelDataProcessing\packages\LabDrivers.1.0.7\lib\net45\LabDrivers.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\ExcelDataProcessing\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\ExcelDataProcessing\packages\Prism.Wpf.7.1.0.431\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ExcelDataProcessing\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CameraController.cs" />
+    <Compile Include="CameraModule.cs" />
+    <Compile Include="Cameras\CaptureCamera.cs" />
+    <Compile Include="Converters\CameraPrimitiveParameterConverter.cs" />
+    <Compile Include="ICameraController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\CameraModuleSettings.cs" />
+    <Compile Include="Settings\SettingNameConstans.cs" />
+    <Compile Include="TemplateSelectors\CameraParameterTemplateSelector.cs" />
+    <Compile Include="ViewModelModels\CameraParameterModel.cs" />
+    <Compile Include="ViewModels\CameraSelectionViewModel.cs" />
+    <Compile Include="Views\CameraSettingsView.xaml.cs">
+      <DependentUpon>CameraSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CameraSelectionView.xaml.cs">
+      <DependentUpon>CameraSelectionView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataProcessing.Core\Lab.Core.csproj">
+      <Project>{e642e60f-f60d-48d8-b127-837496a68b45}</Project>
+      <Name>Lab.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProcessingCommon\Lab.Common.csproj">
+      <Project>{59aa1495-a548-4606-a911-7bc48b539b4e}</Project>
+      <Name>Lab.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProcessingShellModule\Lab.ShellModule.csproj">
+      <Project>{8a0deefa-4ee9-40e7-9ae4-201801992e1a}</Project>
+      <Name>Lab.ShellModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProcessingTheme\Lab.Theme.csproj">
+      <Project>{4d019e8b-1db1-4630-9597-281242126549}</Project>
+      <Name>Lab.Theme</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProcessingUICommon\Lab.UICommon.csproj">
+      <Project>{b03160ea-6978-43ef-b445-e92bdc6679f2}</Project>
+      <Name>Lab.UICommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tracking.Platform\Tracking.Platform.csproj">
+      <Project>{2e42eb09-ca62-4516-8a08-333723d2358d}</Project>
+      <Name>Tracking.Platform</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Styles\Vectors\ExposureTime.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Vectors\ReadOutSpeed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Vectors\Temperature.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Vectors\CameraVector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Vectors\_Vectors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CameraSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CameraSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets" Condition="Exists('..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\ExcelDataProcessing\packages\LabDrivers.1.0.7\build\LabDrivers.targets'))" />
+  </Target>
+</Project>
