@@ -71,8 +71,8 @@
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="RandomColorGenerator.WPF, Version=1.0.1.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\randomColorSharped.WPF.1.0.1\lib\net40\RandomColorGenerator.WPF.dll</HintPath>
+    <Reference Include="RandomColorGenerator.WPF, Version=1.0.2.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\randomColorSharped.1.0.2\lib\net461\RandomColorGenerator.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
